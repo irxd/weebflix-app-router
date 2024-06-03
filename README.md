@@ -1,6 +1,6 @@
 - [x] Design
-- [] General Layout
-- [] Material UI
+- [x] General Layout
+- [x] Material UI
 - [] Homepage
 - [] Search
 - [] Pagination
@@ -10,3 +10,5 @@
 - [] Favorites
 - [] Skeleton
 - [] Unit Test
+
+- Logo generated via https://fontmeme.com/netflix-font/

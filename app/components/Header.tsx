@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <AppBar position="static" sx={{ height: "80px", backgroundColor: "black" }}>
+    <AppBar position="fixed" sx={{ height: "80px", backgroundColor: "black" }}>
       <Container
         sx={{
           display: "flex",

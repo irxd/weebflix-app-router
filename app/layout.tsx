@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
+import { Box } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Weebflix",
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        {children}
+        <Box marginTop={16}>
+          {children}
+        </Box>
       </body>
     </html>
   );
