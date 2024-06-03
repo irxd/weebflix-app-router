@@ -1,13 +1,13 @@
 - [x] Design
 - [x] General Layout
 - [x] Material UI
-- [] Homepage
+- [x] Homepage
 - [] Search
 - [] Pagination
-- [] Detail
+- [x] Detail
 - [] Integrate API
 - [] Zustand
-- [] Favorites
+- [x] Favorites
 - [] Skeleton
 - [] Unit Test
 
