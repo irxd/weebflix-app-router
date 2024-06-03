@@ -15,7 +15,7 @@ export default function Header() {
         <Image src="/logo.png" alt="logo" width={120} height={36} />
         <Stack direction="row" gap="16px">
           <SearchOutlined />
-          <Typography>My Favorite</Typography>
+          <Typography>My Favorites</Typography>
         </Stack>
       </Container>
     </AppBar>

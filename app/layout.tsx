@@ -18,7 +18,9 @@ export default function RootLayout({
       <body>
         <Header />
         <Box marginTop={16}>
-          {children}
+          <main>
+            {children}
+          </main>
         </Box>
       </body>
     </html>
