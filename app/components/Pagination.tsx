@@ -1,6 +1,7 @@
 'use client';
 
 import { Stack, Pagination as MUIPagination, Typography, styled, useMediaQuery, useTheme, InputBase } from "@mui/material";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 const CustomPagination = styled(MUIPagination)({
   '& .MuiPaginationItem-root': {
@@ -17,6 +18,16 @@ const CustomPagination = styled(MUIPagination)({
 export default function Pagination() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', value.toString());
+
+    replace(`${pathname}?${params.toString()}`);
+  };
 
   return (
     <Stack
@@ -29,6 +40,7 @@ export default function Pagination() {
       <CustomPagination
         count={10}
         size={isSmallScreen ? 'small' : 'large'}
+        onChange={handleChange}
       />
       <Stack direction="row" alignItems="center" gap={2}>
         <Typography color="white" fontSize={{ xs: "small", sm: "medium" }}>Go to</Typography>
