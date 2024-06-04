@@ -2,9 +2,10 @@
 - [x] General Layout
 - [x] Material UI
 - [x] Homepage
-- [] Search
-- [] Pagination
+- [x] Search
+- [x] Pagination
 - [x] Detail
+- [x] Responsive
 - [] Integrate API
 - [] Zustand
 - [x] Favorites

@@ -31,7 +31,7 @@ export default function Pagination() {
         size={isSmallScreen ? 'small' : 'large'}
       />
       <Stack direction="row" alignItems="center" gap={2}>
-        <Typography color="white" fontSize={{ xs: "14px", sm: "16px" }}>Go to</Typography>
+        <Typography color="white" fontSize={{ xs: "small", sm: "medium" }}>Go to</Typography>
         <InputBase
           sx={{
             border: "1px solid white",
@@ -39,7 +39,7 @@ export default function Pagination() {
             borderRadius: "4px",
             width: "46px",
             paddingX: "8px",
-            fontSize: { xs: "14px", sm: "16px" },
+            fontSize: { xs: "small", sm: "medium" },
           }}
         />
       </Stack>

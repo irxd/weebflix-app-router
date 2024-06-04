@@ -17,7 +17,7 @@ export default function Favorites() {
             <Grid key={index} item xs={6} sm={4} md={2.4}>
               <Box
                 sx={{
-                  height: { xs: "100px", sm: "200px" },
+                  height: { xs: "200px", sm: "300px" },
                   backgroundColor: "#EEEBE3",
                   borderRadius: "8px"
                 }}
@@ -30,7 +30,7 @@ export default function Favorites() {
       {/* <Stack direction="column" alignItems="center" gap={4} paddingTop={16}>
         <Stack direction="column" alignItems="center">
           <Typography variant="h6" color="white" fontWeight="bold">No favorites yet!</Typography>
-          <Typography color="white">You haven’t added any anime to your favorite :(</Typography>
+          <Typography color="white" fontSize={{ xs: "small", sm: "medium" }}>You haven’t added any anime to your favorite :(</Typography>
         </Stack>
 
         <Button
