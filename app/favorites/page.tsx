@@ -17,7 +17,7 @@ export default function Favorites() {
             <Grid key={index} item xs={6} sm={4} md={2.4}>
               <Box
                 sx={{
-                  height: "300px",
+                  height: { xs: "100px", sm: "200px" },
                   backgroundColor: "#EEEBE3",
                   borderRadius: "8px"
                 }}
