@@ -1,9 +1,19 @@
 'use client';
 
-import { Stack, Pagination as MUIPagination, Typography, styled, useMediaQuery, useTheme, InputBase } from "@mui/material";
+import {
+  Stack,
+  Pagination as MUIPagination,
+  Typography,
+  styled,
+  useMediaQuery,
+  useTheme,
+  InputBase
+} from "@mui/material";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
+import { PaginationProps } from "../lib/definitions";
 
-const CustomPagination = styled(MUIPagination)({
+const StyledPagination = styled(MUIPagination)({
   '& .MuiPaginationItem-root': {
     color: 'white',
   },
@@ -13,9 +23,19 @@ const CustomPagination = styled(MUIPagination)({
   '& .MuiPaginationItem-page.Mui-selected:hover': {
     backgroundColor: '#B81D24',
   },
-});;
+});
 
-export default function Pagination() {
+const StyledInput = styled(InputBase)({
+  '& input[type=number]::-webkit-inner-spin-button, & input[type=number]::-webkit-outer-spin-button': {
+    '-webkit-appearance': 'none',
+    margin: 0,
+  },
+  '& input[type=number]': {
+    '-moz-appearance': 'textfield',
+  },
+});
+
+export default function Pagination({ totalPage, currentPage }: PaginationProps) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const pathname = usePathname();
@@ -29,30 +49,49 @@ export default function Pagination() {
     replace(`${pathname}?${params.toString()}`);
   };
 
+  const handleGoToPage = useDebouncedCallback((page) => {
+    if (page) {
+      const params = new URLSearchParams(searchParams);
+      if (page) {
+        params.set('page', page);
+      } else {
+        params.delete('page');
+      }
+      replace(`/?${params.toString()}`);
+    }
+
+  }, 500);
+
   return (
     <Stack
+      display={totalPage > 1 ? "flex" : "none"}
       direction={{ xs: "column", sm: "row" }}
       alignItems="center"
       justifyContent="center"
       gap={4}
       marginBottom={16}
     >
-      <CustomPagination
-        count={10}
+      <StyledPagination
+        count={totalPage}
         size={isSmallScreen ? 'small' : 'large'}
         onChange={handleChange}
+        page={currentPage}
       />
       <Stack direction="row" alignItems="center" gap={2}>
         <Typography color="white" fontSize={{ xs: "small", sm: "medium" }}>Go to</Typography>
-        <InputBase
+        <StyledInput
           sx={{
             border: "1px solid white",
             color: "white",
             borderRadius: "4px",
-            width: "46px",
+            width: "56px",
             paddingX: "8px",
             fontSize: { xs: "small", sm: "medium" },
           }}
+          onChange={(e) => {
+            handleGoToPage(e.target.value);
+          }}
+          type="number"
         />
       </Stack>
     </Stack>

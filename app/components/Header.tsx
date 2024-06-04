@@ -1,7 +1,6 @@
-import { SearchOutlined, Close, FavoriteBorderOutlined } from "@mui/icons-material";
+import { FavoriteBorderOutlined } from "@mui/icons-material";
 import { AppBar, Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import InputBase from '@mui/material/InputBase';
 import Search from "./Search";
 import Link from "next/link";
 
