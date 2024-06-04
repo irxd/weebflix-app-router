@@ -1,5 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
 import Pagination from "./components/Pagination";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,14 +9,16 @@ export default function Home() {
         {
           Array.from({ length: 25 }).map((_, index) => (
             <Grid key={index} item xs={6} sm={4} md={2.4}>
-              <Box
-                sx={{
-                  height: { xs: "200px", sm: "300px" },
-                  backgroundColor: "#EEEBE3",
-                  borderRadius: "8px"
-                }}
-              >
-              </Box>
+              <Link href="/details/1">
+                <Box
+                  sx={{
+                    height: { xs: "200px", sm: "300px" },
+                    backgroundColor: "#EEEBE3",
+                    borderRadius: "8px"
+                  }}
+                >
+                </Box>
+              </Link>
             </Grid>
           ))
         }

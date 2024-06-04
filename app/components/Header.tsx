@@ -3,6 +3,7 @@ import { AppBar, Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import InputBase from '@mui/material/InputBase';
 import Search from "./Search";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -14,24 +15,27 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between"
         }}>
-        <Box display={{ xs: "none", sm: "block" }}>
-          <Image src="/logo.png" alt="logo" width={120} height={36} />
-        </Box>
-        <Box display={{ xs: "block", sm: "none" }} mr={2}>
-          <Image src="/logo-mobile.png" alt="logo" width={26} height={36} />
-        </Box>
+        <Link href="/">
+          <Box display={{ xs: "none", sm: "block" }}>
+            <Image src="/logo.png" alt="logo" width={120} height={36} />
+          </Box>
+          <Box display={{ xs: "block", sm: "none" }} mr={2}>
+            <Image src="/logo-mobile.png" alt="logo" width={26} height={36} />
+          </Box>
+        </Link>
 
         <Box display={{ xs: "block", sm: "none" }}>
           <Search />
         </Box>
 
-
         <Stack direction="row" gap={2} alignItems="center">
           <Box display={{ xs: "none", sm: "block" }}>
             <Search />
           </Box>
-          <Typography display={{ xs: "none", sm: "block" }}>My Favorites</Typography>
-          <FavoriteBorderOutlined sx={{ display: { xs: "block", sm: "none" } }} />
+          <Link href="/favorites">
+            <Typography display={{ xs: "none", sm: "block" }}>My Favorites</Typography>
+            <FavoriteBorderOutlined sx={{ display: { xs: "block", sm: "none" } }} />
+          </Link>
         </Stack>
       </Container>
     </AppBar>
