@@ -3,9 +3,10 @@
 import { SearchOutlined } from "@mui/icons-material";
 import { InputBase, Stack } from "@mui/material";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { Suspense } from "react";
 import { useDebouncedCallback } from 'use-debounce';
 
-export default function Search() {
+function SearchInput() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const path = usePathname();
@@ -28,6 +29,19 @@ export default function Search() {
   }, 300);
 
   return (
+    <InputBase
+      sx={{ color: "white" }}
+      startAdornment={<SearchOutlined />}
+      onChange={(e) => {
+        handleSearch(e.target.value);
+      }}
+      defaultValue={searchParams.get('query')?.toString()}
+    />
+  );
+}
+
+export default function Search() {
+  return (
     <Stack
       direction="row"
       alignItems="center"
@@ -39,14 +53,9 @@ export default function Search() {
         px: "4px",
       }}
     >
-      <InputBase
-        sx={{ color: "white" }}
-        startAdornment={<SearchOutlined />}
-        onChange={(e) => {
-          handleSearch(e.target.value);
-        }}
-        defaultValue={searchParams.get('query')?.toString()}
-      />
+      <Suspense>
+        <SearchInput />
+      </Suspense>
     </Stack>
   );
 }
